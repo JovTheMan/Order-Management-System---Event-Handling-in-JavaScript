@@ -16,4 +16,24 @@ function updateTotalPrice() {
 productSelector.addEventListener('change', updateTotalPrice);
 quantityInput.addEventListener('input', updateTotalPrice);
 
+// Task 4: Handle Order Submission and Display Order Summary
+const placeOrderButton = document.getElementById('place-order');
+const orderSummary = document.getElementById('order-summary');
+
+placeOrderButton.addEventListener('click', function() {
+    const selectedProduct = productSelector.options[productSelector.selectedIndex].text;
+    const quantity = quantityInput.value;
+    const totalPrice = totalPriceElement.textContent;
+
+    // Validate quantity input
+    if (quantity < 1) {
+        orderSummary.textContent = "Please enter a valid quantity.";
+        return;
+    }
+
+    // Display order summary
+    orderSummary.textContent = `You ordered ${quantity} of ${selectedProduct}. Total price: $${totalPrice}`;
+});
+
+
 
